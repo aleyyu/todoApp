@@ -1,0 +1,20 @@
+<div class="row mt-4">
+    <div class="col bg-white">
+
+        <div class="card bg-dark p-1">
+            <h3 class="text-white p-3 pt-2 pb-2">{{categoryTitle}}</h3>
+        </div>
+
+        <div class="shadow">
+            <div class="input-group p-4">
+                <input type="text" class="form-control" placeholder="Add Category" [(ngModel)]="newCatValue">
+                <button class="btn btn-outline-dark"type="button" (click)="addCategory()">Add</button>
+            </div>
+        </div>
+        
+        <mat-selection-list #category [multiple]="false" >
+            <mat-list-option routerLink="todos/category/0"> {{allcats.name}} </mat-list-option>
+            <mat-list-option *ngFor="let cat of categories" routerLink="todos/category/{{cat.id}}"> {{cat.name}} </mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>

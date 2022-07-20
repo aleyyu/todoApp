@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Add New Todo</h1>
+<div mat-dialog-content>
+    <form [formGroup]="todoForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Todo Name</mat-label>
+            <input formControlName="name" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input formControlName="description" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" placeholder="Category">
+                <mat-option value="Yazılım İşleri">Yazılım İşleri</mat-option>
+                <mat-option value="Ev İşleri">Ev İşleri</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" placeholder="Category" [(ngModel)]="category">
+                <mat-option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addTodo()">Save</button>
+</div>
